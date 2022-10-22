@@ -92,5 +92,25 @@ document.querySelector("form").addEventListener("submit", (Event) => {
 const cardHolder = document.querySelector("#card-holder");
 cardHolder.addEventListener("input", () => {
   const ccHolder = document.querySelector(".cc-holder .value")
-  ccHolder.innerText = cardHolder.value
+  ccHolder.innerText = cardHolder.value.length === 0 ? 
+  "Fulano da Silva" : cardHolder.value;
 });
+
+securtyCodeMasked.on("accept", ()=>{
+updateSecurityCode(securtyCodeMasked.value);
+})
+
+function updateSecurityCode(code){
+  const ccSecurity = document.querySelector(".cc-security .value")
+  ccSecurity.innerText = code.length === 0 ? "123" : code
+
+}
+
+CardNumberMasked.on("accept", ()=>{
+updateCardNumber(CardNumberMasked.value)
+})
+
+function updateCardNumber(number){
+  const ccNumber = document.querySelector(".cc-number")
+  ccNumber.innerText = number.length === 0 ?  "1234 5678 9012 3456" : number
+}
